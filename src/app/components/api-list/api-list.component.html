@@ -1,0 +1,56 @@
+<br>
+<br><br>
+<mat-toolbar color="primary">
+  <button type="button" class="example-icon" mat-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Rick and Morty App</span>
+  <span class="example-spacer"></span>
+  <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button> -->
+</mat-toolbar>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer  class="example-sidenav" mode="side">
+    <a class="text-decoration-none" href="/"><span><h3>Home</h3></span></a> <br>
+    <a class="text-decoration-none" href="episodes"><span><h3>Episodes</h3></span></a>
+  </mat-drawer>
+
+  <div class="example-sidenav-content py-3">
+
+
+    <div class="mt-4">
+      <div class="container">
+        <div class="col-md-4 col-lg-6 my-3 mx-auto text-center">
+          <input class="form-control me-2" #inputSearch (keyup)="filterCharacters(inputSearch.value)" type="search"
+            placeholder="Search" aria-label="Search" />
+        </div>
+        <div class="row" style="z-index: 0;">
+          <app-api-card class="col" *ngFor="let character of charactersFilter; index as pos" [character]="character">
+          </app-api-card>
+        </div>
+        <div class="col-xs-12" *ngIf="characters.length <= 0">
+          <p>No results......</p>
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+          <button class="btn btn-primary" (click)="loadPrevious()">Prevoius page</button>
+          <button class="btn btn-primary" (click)="loadNext()">Next page</button>
+        </div>
+        <a [ngClass]="'no-hidden'" *ngIf="showGoUpButton" (click)="onScrollTop()" style="color: white; cursor: pointer;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-arrow-up-circle-fill" style="width: 30px; height: 50px" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</mat-drawer-container>
+
+

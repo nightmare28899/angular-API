@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+
+<br>
+<br><br>
+<mat-toolbar color="primary">
+  <button type="button" class="example-icon" mat-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Rick and Morty App</span>
+  <span class="example-spacer"></span>
+  <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button> -->
+</mat-toolbar>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer  class="example-sidenav" mode="side">
+    <a class="text-decoration-none" href="/"><span><h3>Home</h3></span></a> <br>
+    <a class="text-decoration-none" href="episodes"><span><h3>Episodes</h3></span></a>
+  </mat-drawer>
+
+  <div class="example-sidenav-content py-3">
+    <div class="container mt-5 mx-auto">
+      <div class="mx-auto">
+        <div class="row">
+          <h1 class="text-dark text-center"><b>Characters of this Episode</b></h1>
+          <div class="col-3" *ngFor="let char of characteres; index as pos">
+            <div class="card m-3">
+              <div *ngIf="char != ''">
+                <img [src]="char.image" class="card-img-top" [alt]="char.id" />
+                <p class="text-center mt-3">{{ char.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>
+
+<app-footer></app-footer>

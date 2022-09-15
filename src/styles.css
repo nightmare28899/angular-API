@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html,
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.no-hidden {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  visibility: visible;
+}
+
+.colorNavFoot {
+  background-color: #673ab7;
+}
+
+/* .colorButton {
+  background-color: #673ab7;
+  color: white;
+  white: 400px;
+  height: 50px;
+  border-radius: 5px;
+} */
+
+/* .colorButton:hover {
+  background-color: #773ab7;
+} */
+
+.example-container {
+  width: 100%;
+  height: 100%;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-icon {
+  background: none;
+  border: none;
+  margin-top: 10px;
+  margin-right: 10px;
+  color: white;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}

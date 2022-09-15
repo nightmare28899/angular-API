@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<br>
+<br><br>
+<mat-toolbar color="primary">
+  <button type="button" class="example-icon" mat-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Rick and Morty App</span>
+  <span class="example-spacer"></span>
+  <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button> -->
+</mat-toolbar>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer  class="example-sidenav" mode="side">
+    <a class="text-decoration-none" href="/"><span><h3>Home</h3></span></a> <br>
+    <a class="text-decoration-none" href="episodes"><span><h3>Episodes</h3></span></a>
+  </mat-drawer>
+
+  <div class="example-sidenav-content py-3">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-dark text-center">Episodes</h1>
+          <div class="row">
+            <div class="col-md-4 mt-3" *ngFor="let episode of episodes; index as pos">
+              <a [routerLink]="['/episodes-details', episode.id]" class="card shadow text-decoration-none text-dark">
+                <div class="card-body">
+                  <h3 class="card-title">{{ pos + 1 }}.- Name: {{episode.name}}</h3>
+                  <h5 class="card-subtitle mb-2 text-muted">Date: {{episode.air_date | date:"MM-dd-yy"}}</h5>
+                  <!-- <p class="card-text">{{episode.episode}}</p> -->
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>
+<app-footer></app-footer>

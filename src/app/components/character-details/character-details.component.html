@@ -1,0 +1,113 @@
+<app-navbar></app-navbar>
+
+<br>
+<br><br>
+<mat-toolbar color="primary">
+  <button type="button" class="example-icon" mat-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Rick and Morty App</span>
+  <span class="example-spacer"></span>
+  <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button> -->
+</mat-toolbar>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <a class="text-decoration-none" href="/"><span>
+        <h3>Home</h3>
+      </span></a> <br>
+    <a class="text-decoration-none" href="episodes"><span>
+        <h3>Episodes</h3>
+      </span></a>
+  </mat-drawer>
+
+  <div class="example-sidenav-content py-3">
+    <div class="container mt-5 pt-5 mx-auto">
+      <div class="mx-auto">
+        <div *ngFor="let character of details">
+          <div class="card shadow my-3" style="width: 14rem">
+            <a [routerLink]="['/character-details', character.id]"><img [src]="character.image" class="card-img-top"
+                [alt]="character.name" /></a>
+            <div class="card-body row">
+              <h5 class="card-title">{{ character.name | words }}</h5>
+              <p class="col-6 fw-bold"><b>Location:</b></p>
+              <p class="card-text col-6">{{ character.location.name }}</p>
+              <p class="col-6 fw-bold"><b>Status:</b></p>
+              <p class="col-6">
+                {{ character.status }}
+                <svg [ngClass]="{
+                    'text-danger': character.status == 'Dead',
+                    'text-success': character.status == 'Alive'
+                  }" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-record-circle-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+              </p>
+              <p class="col-6 fw-bold">Origin:</p>
+              <p class="col-6">{{ character.origin.name }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <h3 class="text-dark text-center">Residents of that location</h3>
+          <div class="col-3" *ngFor="let img of imageResidents; index as pos">
+            <div class="card shadow m-3">
+              <div *ngIf="img != ''">
+                <img [src]="img" class="card-img-top" [alt]="img.id" />
+                <p class="text-center mt-3">{{ imageNames[pos] }}</p>
+                <div class="card-body row">
+                  <div class="col-6">
+                    <p><b>Status:</b></p>
+                  </div>
+                  <div class="col-6">
+                    <p>
+                      {{ imageStatus[pos] }}
+                      <svg [ngClass]="{
+                        'text-danger': imageStatus[pos] == 'Dead',
+                        'text-success': imageStatus[pos] == 'Alive'
+                      }" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-record-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                      </svg>
+                    </p>
+                  </div>
+                  <div class="col-6">
+                    <p><b>Gender:</b></p>
+                  </div>
+                  <div class="col-6">
+                    <p>{{ imageGender[pos] }}</p>
+                  </div>
+                  <div class="col-6">
+                    <p><b>Species:</b></p>
+                  </div>
+                  <div class="col-6">
+                    <p>{{ imageSpecies[pos] }}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- <div *ngIf="img == ''">
+                <p>No hay imagen</p>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <a [ngClass]="'no-hidden'" *ngIf="showGoUpButton" (click)="onScrollTop()" style="color: white; cursor: pointer;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-arrow-up-circle-fill" style="width: 30px; height: 50px" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</mat-drawer-container>
+
+<app-footer></app-footer>
