@@ -33,7 +33,6 @@ export class ApiListComponent implements OnInit {
         this.characters[i].origin.name
         this.origins.push(this.characters[i].origin.name);
       }
-      console.log(this.origins);
     });
   }
 

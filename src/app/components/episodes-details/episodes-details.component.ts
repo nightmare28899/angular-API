@@ -18,9 +18,7 @@ export class EpisodesDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.apiService.getEpisodeById(this.id).subscribe((data: any) => {
-      /* console.log(data.characters); */
       for (let i = 0; i < data.characters.length; i++) {
-        /* console.log(data.characters[i]); */
         this.apiService.getCharacterByUrl(data.characters[i]).subscribe((data: any) => {
           this.characteres.push(data);
         });

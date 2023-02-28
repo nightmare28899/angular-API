@@ -30,26 +30,28 @@
     <div class="container mt-5 pt-5 mx-auto">
       <div class="mx-auto">
         <div *ngFor="let character of details">
-          <div class="card shadow my-3" style="width: 14rem">
-            <a [routerLink]="['/character-details', character.id]"><img [src]="character.image" class="card-img-top"
-                [alt]="character.name" /></a>
-            <div class="card-body row">
-              <h5 class="card-title">{{ character.name | words }}</h5>
-              <p class="col-6 fw-bold"><b>Location:</b></p>
-              <p class="card-text col-6">{{ character.location.name }}</p>
-              <p class="col-6 fw-bold"><b>Status:</b></p>
-              <p class="col-6">
-                {{ character.status }}
-                <svg [ngClass]="{
-                    'text-danger': character.status == 'Dead',
-                    'text-success': character.status == 'Alive'
-                  }" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-record-circle-fill" viewBox="0 0 16 16">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                </svg>
-              </p>
-              <p class="col-6 fw-bold">Origin:</p>
-              <p class="col-6">{{ character.origin.name }}</p>
+          <div *ngIf="character.image != undefined">
+            <div class="card shadow my-3" style="width: 14rem">
+              <a [routerLink]="['/character-details', character.id]"><img [src]="character.image" class="card-img-top"
+                  [alt]="character.name" /></a>
+              <div class="card-body row">
+                <h5 class="card-title">{{ character.name | words }}</h5>
+                <p class="col-6 fw-bold"><b>Location:</b></p>
+                <p class="card-text col-6">{{ character.location.name }}</p>
+                <p class="col-6 fw-bold"><b>Status:</b></p>
+                <p class="col-6">
+                  {{ character.status }}
+                  <svg [ngClass]="{
+                      'text-danger': character.status == 'Dead',
+                      'text-success': character.status == 'Alive'
+                    }" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-record-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                  </svg>
+                </p>
+                <p class="col-6 fw-bold">Origin:</p>
+                <p class="col-6">{{ character.origin.name }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -91,9 +93,6 @@
                   </div>
                 </div>
               </div>
-              <!-- <div *ngIf="img == ''">
-                <p>No hay imagen</p>
-              </div> -->
             </div>
           </div>
         </div>

@@ -33,30 +33,20 @@ export class CharacterDetailsComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.apiService.getElementsById(this.id).subscribe((result) => {
       this.details.push(result);
-      /* console.log(this.details); */
       this.location = this.details[0].location.url;
-      /* console.log(this.location); */
       this.apiService.getLocation(this.location).subscribe((result) => {
         this.resid.push(result);
-        /* console.log('residentes',this.resid[0].residents[0]); */
-        /* const urls = this.resid[0].residents.map(function(element: any) {
-          return element;
-        }); */
-        /* console.log(this.resid); */
         for (let i = 0; i < 50; i++) {
-          this.apiService.getCharacterByUrl(this.resid[0].residents[i]).subscribe((result) => {
-            this.imageResidents.push(result.image);
-            this.imageNames.push(result.name);
-            this.imageStatus.push(result.status);
-            this.imageGender.push(result.gender);
-            this.imageSpecies.push(result.species);
-            /* console.log(result.species);
-            console.log(result.status); */
-            /* console.log(this.imageNames); */
-            /* console.log('datos recibidos',result.image); */
-          });
+          this.apiService
+            .getCharacterByUrl(this.resid[0].residents[i])
+            .subscribe((result) => {
+              this.imageResidents.push(result.image);
+              this.imageNames.push(result.name);
+              this.imageStatus.push(result.status);
+              this.imageGender.push(result.gender);
+              this.imageSpecies.push(result.species);
+            });
         }
-
       });
     });
   }

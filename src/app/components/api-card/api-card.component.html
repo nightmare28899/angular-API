@@ -1,37 +1,18 @@
 <mat-card class="shadow my-3 text-center" style="width: 14rem">
-  <a [routerLink]="['/character-details', character.id]"
-    ><img mat-card-image
-      [src]="character.image"
-      class="card-img-top"
-      [alt]="character.name"
-  /></a>
+  <a [routerLink]="['/character-details', character.id]"><img mat-card-image [src]="character.image"
+      class="card-img-top" [alt]="character.name" /></a>
   <div class="card-body row">
     <mat-card-title class="card-title mb-4">{{ character.name }}</mat-card-title>
-    <!-- <p class="col-6">Species:</p>
-    <p class="card-text col-6"> {{ character.species   }}</p> -->
     <div class="col-6">Status:</div>
     <div class="col-6">
-       {{ character.status | words }}
-      <svg
-        [ngClass]="{
+      {{ character.status | words }}
+      <svg [ngClass]="{
           'text-danger': character.status == 'Dead',
           'text-success': character.status == 'Alive'
-        }"
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        class="bi bi-record-circle-fill"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-        />
+        }" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        class="bi bi-record-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
       </svg>
     </div>
-    <!-- <p class="col-6">
-      Gender:
-    </p>
-    <p class="col-6">{{ character.gender }}</p> -->
   </div>
 </mat-card>
