@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, RouterLink } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ApiDetailsComponent } from './components/api-details/api-details.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { EpisodesDetailsComponent } from './components/episodes-details/episodes-details.component';

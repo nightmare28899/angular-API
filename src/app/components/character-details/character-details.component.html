@@ -20,7 +20,8 @@
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <a class="text-decoration-none" href="/"><span>
         <h3>Home</h3>
-      </span></a> <br>
+      </span></a>
+    <mat-divider></mat-divider><br>
     <a class="text-decoration-none" href="episodes"><span>
         <h3>Episodes</h3>
       </span></a>
@@ -96,7 +97,8 @@
             </div>
           </div>
         </div>
-        <a [ngClass]="'no-hidden'" *ngIf="showGoUpButton" (click)="onScrollTop()" style="color: white; cursor: pointer;">
+        <a [ngClass]="'no-hidden'" *ngIf="showGoUpButton" (click)="onScrollTop()"
+          style="color: white; cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-arrow-up-circle-fill" style="width: 30px; height: 50px" viewBox="0 0 16 16">
             <path

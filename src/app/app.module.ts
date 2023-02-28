@@ -5,6 +5,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +27,6 @@ import { EpisodesListComponent } from './components/episodes-list/episodes-list.
 import { EpisodesDetailsComponent } from './components/episodes-details/episodes-details.component';
 import { WordsPipe } from './components/pipes/words.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,7 @@ import { WordsPipe } from './components/pipes/words.pipe';
     CharacterDetailsComponent,
     EpisodesListComponent,
     EpisodesDetailsComponent,
-    WordsPipe
+    WordsPipe,
   ],
   imports: [
     HttpClientModule,
@@ -49,10 +51,13 @@ import { WordsPipe } from './components/pipes/words.pipe';
     MatIconModule,
     MatCardModule,
     MatSidenavModule,
+    MatDividerModule,
+    MatPaginatorModule,
+    MatTableModule,
     BrowserAnimationsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
   ],
   providers: [ApiServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
