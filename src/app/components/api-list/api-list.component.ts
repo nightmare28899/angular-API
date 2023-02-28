@@ -42,7 +42,7 @@ export class ApiListComponent implements OnInit {
     });
 
     this.apiService.getPages().subscribe((pages: any) => {
-      this.countElements = pages.count;
+      this.countElements = pages.pages;
       for (let i = 1; i <= pages.pages; i++) {
         this.pageNum.push(i);
       }

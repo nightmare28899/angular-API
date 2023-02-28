@@ -95,7 +95,7 @@ export class ApiServiceService {
 
   getEpisodeList(): Observable<CharacterDetails> {
     return this.http
-      .get<any>('https://rickandmortyapi.com/api/episode', this.httpOptions)
+      .get<any>('https://rickandmortyapi.com/api/episode/', this.httpOptions)
       .pipe(
         map((data: any) => data.results),
         retry(1)

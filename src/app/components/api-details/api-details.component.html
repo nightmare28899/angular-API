@@ -3,4 +3,7 @@
     <app-api-card class="col" *ngFor="let character of details" [character]="character">
     </app-api-card>
   </div>
+  <div class="col-xs-12" *ngIf="details.length <= 0">
+    <p>No results......</p>
+  </div>
 </div>

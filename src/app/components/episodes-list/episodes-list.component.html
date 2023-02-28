@@ -18,9 +18,9 @@
 
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <a class="text-decoration-none" href="/"><span><h3>Home</h3></span></a>
+    <a class="text-decoration-none" [routerLink]="['/']"><span><h3>Home</h3></span></a>
     <mat-divider></mat-divider><br>
-    <a class="text-decoration-none" href="episodes"><span><h3>Episodes</h3></span></a>
+    <a class="text-decoration-none" [routerLink]="['/episodes']"><span><h3>Episodes</h3></span></a>
   </mat-drawer>
 
   <div class="example-sidenav-content py-3">
@@ -36,6 +36,9 @@
                   <h5 class="card-subtitle mb-2 text-muted">Date: {{episode.air_date | date:"MM-dd-yy"}}</h5>
                 </div>
               </a>
+            </div>
+            <div class="col-xs-12" *ngIf="episodes.length <= 0">
+              <p>No results......</p>
             </div>
           </div>
         </div>

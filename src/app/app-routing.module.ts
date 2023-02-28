@@ -9,7 +9,7 @@ import { NotFoundComponent } from './components/shared/not-found/not-found.compo
 
 const routes: Routes = [
   {
-    path: 'Home',
+    path: 'home',
     component: HomeComponent,
   },
   {
@@ -20,14 +20,14 @@ const routes: Routes = [
     path: 'character-details/:id',
     component: CharacterDetailsComponent,
   },
-  { path: '', redirectTo: '/Home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'episodes', component: EpisodesListComponent },
   { path: 'episodes-details/:id', component: EpisodesDetailsComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
