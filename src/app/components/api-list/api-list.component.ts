@@ -1,9 +1,13 @@
-import { Component, HostListener, Inject, OnInit, ViewChild } from '@angular/core';
-import { filter, take } from 'rxjs';
+import {
+  Component,
+  HostListener,
+  Inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ApiServiceService } from '../services/api-service.service';
 import { DOCUMENT } from '@angular/common';
 import { CharacterDetails } from '../interfaces/characters-details.model';
-import { NavigationEnd, ParamMap } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
@@ -22,6 +26,7 @@ export class ApiListComponent implements OnInit {
   count: number = 1;
   showFiller = false;
   countElements: number = 0;
+  numberPage: Array<number> = [];
 
   @ViewChild(MatPaginator)
   paginatior: MatPaginator | undefined;
@@ -48,6 +53,7 @@ export class ApiListComponent implements OnInit {
       }
     });
 
+    this.numberPage = Array.from(Array(43).keys());
   }
 
   filterCharacters(charactersFilterName: string) {
@@ -95,8 +101,8 @@ export class ApiListComponent implements OnInit {
     this.document.documentElement.scrollTop = 0;
   }
 
-  pageSelected(page: number) {
-    this.count = page;
+  pageSelected(page: any) {
+    this.count = page.target.value;
     this.apiService.setPageObservable(this.count);
     this.apiService.currentPageObservable.subscribe((page) => {
       this.count = page;

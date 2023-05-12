@@ -30,7 +30,7 @@ export class ApiServiceService {
 
   getPages(): any {
     return this.http
-      .get<any>(`${environment.baseUrlAPI}`, this.httpOptions)
+      .get(`${environment.baseUrlAPI}`, this.httpOptions)
       .pipe(
         map((data: any) => data.info),
         retry(1)
@@ -39,7 +39,7 @@ export class ApiServiceService {
 
   getCharacterList(): any {
     return this.http
-      .get<any>(`${environment.baseUrlAPI}`, this.httpOptions)
+      .get(`${environment.baseUrlAPI}`, this.httpOptions)
       .pipe(
         map((data: any) => data.results),
         retry(1)
@@ -48,7 +48,7 @@ export class ApiServiceService {
 
   getCharacterByName(name: string): Observable<CharacterDetails> {
     return this.http
-      .get<any>(
+      .get(
         `${environment.baseUrlAPI}/?name=${name}`,
         this.httpOptions
       )
@@ -60,7 +60,7 @@ export class ApiServiceService {
 
   getElementsById(id: number): Observable<CharacterDetails> {
     return this.http
-      .get<any>(`${environment.baseUrlAPI}/${id}`, this.httpOptions)
+      .get(`${environment.baseUrlAPI}/${id}`, this.httpOptions)
       .pipe(
         map((data: any) => data),
         retry(1)
@@ -68,14 +68,14 @@ export class ApiServiceService {
   }
 
   getLocation(url: string): Observable<CharacterDetails> {
-    return this.http.get<any>(`${url}`, this.httpOptions).pipe(
+    return this.http.get(`${url}`, this.httpOptions).pipe(
       map((data: any) => data),
       retry(1)
     );
   }
 
   getCharacterByUrl(url: any): Observable<CharacterDetails> {
-    return this.http.get<any>(`${url}`, this.httpOptions).pipe(
+    return this.http.get(`${url}`, this.httpOptions).pipe(
       map((data: any) => data),
       retry(1)
     );
@@ -83,7 +83,7 @@ export class ApiServiceService {
 
   getPage(numPage: number): Observable<CharacterDetails> {
     return this.http
-      .get<any>(
+      .get(
         `${environment.baseUrlAPI}/?page=${numPage}`,
         this.httpOptions
       )
@@ -95,7 +95,7 @@ export class ApiServiceService {
 
   getEpisodeList(): Observable<CharacterDetails> {
     return this.http
-      .get<any>('https://rickandmortyapi.com/api/episode/', this.httpOptions)
+      .get('https://rickandmortyapi.com/api/episode/', this.httpOptions)
       .pipe(
         map((data: any) => data.results),
         retry(1)
@@ -104,7 +104,7 @@ export class ApiServiceService {
 
   getEpisodeById(id: number): Observable<CharacterDetails> {
     return this.http
-      .get<any>(`https://rickandmortyapi.com/api/episode/${id}`, this.httpOptions)
+      .get(`https://rickandmortyapi.com/api/episode/${id}`, this.httpOptions)
       .pipe(
         map((data: any) => data),
         retry(1)
